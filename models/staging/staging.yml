@@ -3,41 +3,9 @@ version: 2
 
 models:
 
-    - name: stg_customer
+    - name: stg_sales
       columns:
-        - name: C_CUSTKEY
-          description: ""
-          tests:
-            - unique
-            - not_null
-
-    - name: stg_orders
-      columns:
-        - name: O_ORDERKEY
-          description: ""
-          tests:
-            - unique
-            - not_null
-
-    - name: stg_lineitem
-      columns:
-        - name: L_ITEMKEY
-          description: ""
-          tests:
-            - unique
-            - not_null
-
-    - name: stg_part
-      columns:
-        - name: P_PARTKEY
-          description: ""
-          tests:
-            - unique
-            - not_null
-
-    - name: stg_supplier
-      columns:
-        - name: S_SUPPKEY
+        - name: sale_id
           description: ""
           tests:
             - unique

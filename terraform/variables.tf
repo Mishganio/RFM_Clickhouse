@@ -5,10 +5,10 @@ variable "admin_password" {
 #   default     = "password"
 }
 
-data "yandex_mdb_clickhouse_cluster" "clickhouse_starschema" {
-  name = "clickhouse_starschema"
+data "yandex_mdb_clickhouse_cluster" "rfm_clickhouse" {
+  name = "rfm_clickhouse"
 }
 
 output "clickhouse_host_fqdn" {
-  value = data.yandex_mdb_clickhouse_cluster.clickhouse_starschema.host[0].fqdn
+  value = data.yandex_mdb_clickhouse_cluster.rfm_clickhouse.host[0].fqdn
 }

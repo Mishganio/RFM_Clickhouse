@@ -18,53 +18,10 @@
 - [ ] [Create PR and make CI tests pass](#6-create-pr-and-make-ci-tests-pass)
 
 ## 1. Configure Developer Environment
+    
+       devcontainer build .
+       devcontainer open .
 
-1. You have got 3 options to set up:
- 
-    <details><summary>Start with GitHub Codespaces / Dev Container:</summary>
-    <p>
-
-    Open in Github Codespace:
-
-    ![GitHub Codespaces](./docs/github_codespaces.png)
-
-    Or open in a local Dev Container (VS Code):
-
-    ![Dev Container](./docs/dev_container.png)
-
-    </p>
-    </details>
-
-    <details><summary>Set up Docker containers manually:</summary>
-    <p>
-
-    Install [Docker](https://docs.docker.com/desktop/#download-and-install) and run commands:
-
-    ```bash
-    # build & run container
-    docker-compose build
-    docker-compose up -d
-
-    # alias docker exec command
-    alias dbt="docker-compose exec dev dbt"
-    ```
-
-    </p>
-    </details>
-
-    <details><summary>Alternatively, install on a local machine:</summary>
-    <p>
-
-    1. [Install dbt](https://docs.getdbt.com/dbt-cli/install/overview)
-
-        [Configure profile](https://docs.getdbt.com/dbt-cli/configure-your-profile) manually by yourself. By default, dbt expects the `profiles.yml` file to be located in the `~/.dbt/` directory. Use this [template](./profiles.yml) and enter your own credentials.
-
-    1. Intsall [yc CLI](https://cloud.yandex.com/en-ru/docs/cli/operations/install-cli)
-
-    1. Install [Terraform](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli)
-
-    </p>
-    </details>
 
 1. Populate `.env` file
 

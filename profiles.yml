@@ -3,15 +3,17 @@ config:
   use_colors: True
   partial_parse: True
 
-clickhouse_starschema:
+rfm_clickhouse:
   outputs:
     dev:
       type: clickhouse
       schema: default
       host: "{{ env_var('DBT_HOST') }}"
       port: 8443
-      user: "{{ env_var('DBT_USER') }}"
-      password: "{{ env_var('DBT_PASSWORD') }}"
+      user: admin
+      #"{{ env_var('DBT_USER') }}"
+      password: click123 
+      #"{{ env_var('DBT_PASSWORD') }}"
       secure: True
       verify: False
     ci:

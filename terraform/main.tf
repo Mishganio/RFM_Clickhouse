@@ -11,8 +11,8 @@ provider "yandex" {
 }
 
 
-resource "yandex_mdb_clickhouse_cluster" "clickhouse_starschema" {
-  name                    = "clickhouse_starschema"
+resource "yandex_mdb_clickhouse_cluster" "rfm_clickhouse" {
+  name                    = "rfm_clickhouse"
   environment             = "PRESTABLE"
   network_id              = yandex_vpc_network.default_network.id
   sql_database_management = true
