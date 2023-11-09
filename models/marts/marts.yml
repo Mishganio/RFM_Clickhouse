@@ -2,18 +2,14 @@
 version: 2
 
 models:
-    - name: f_lineorder_flat
-      description: Denormalized fact table
+    - name: f_rfm
+      description: rfm table
       columns:
-        - name: L_ITEMKEY
-          description: ""
-          tests:
-            - unique
-            - not_null
-    - name: f_orders_stats
-      description: Aggregation fact table
-      columns:
-        - name: O_ORDERYEAR
+        - name: user_id
           description: ""
           tests:
             - not_null
+        - name: rdate
+          description: ""
+          tests:
+            - not_null    

@@ -33,10 +33,11 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
     rfm_clickhouse:
       # Applies to all files under models/example/
-        +materialized: table
+        #+materialized: table
         staging:
             +materialized: table
-            +tags: ['staging']
+        Intermediate:
+            +materialized: incremental
         marts:
             +materialized: table
-            +tags: ['marts']
+           

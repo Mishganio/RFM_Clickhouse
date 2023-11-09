@@ -26,6 +26,6 @@
         {% set statement = run_query(src) %}
     {% endfor %}
 
-{{ print('Initialized source tables – TPCH (S3)') }}    
+{{ print('Initialized source tables (S3)') }}    
 
 {%- endmacro %}
