@@ -74,6 +74,9 @@ dbt debug
      dbt build -s int_rfm --vars 'dt: 2023-10-01'
      dbt build -s int_rfm --vars 'dt: 2023-11-01'
 
+
+     dbt build -s f_rfm
+
 ## 6. Create PR and make CI tests pass
 
 ![Github Actions check passed](./docs/github_checks_passed.png)
