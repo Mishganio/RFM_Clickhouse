@@ -12,13 +12,13 @@
          user_id,rdate,
          MAX(_recency) AS recency,
             CASE
-			WHEN MAX(_recency) <=30 THEN '1| 1 месяц'
-        	WHEN MAX(_recency) between 31 AND 61   THEN '2| 2 месяца'
-        	WHEN MAX(_recency) between 62 AND 92   THEN '3| квартал'
-        	WHEN MAX(_recency) between 93 AND 183  THEN '4| полгода'
-        	WHEN MAX(_recency) between 184 AND 365 THEN '5| год'
-        	WHEN MAX(_recency) between 366 AND 732 THEN '6| 2 года'
-        ELSE '7| более 3х лет'
+			WHEN MAX(_recency) <=31 THEN '1| до 1 месяца'
+        	WHEN MAX(_recency) between 31 AND 61    THEN '2| 1-2 месяца'
+        	WHEN MAX(_recency) between 62 AND 122   THEN '3| 2-4 месяца'
+        	WHEN MAX(_recency) between 123 AND 183  THEN '4| 4-6 месяцев'
+        	WHEN MAX(_recency) between 184 AND 244  THEN '5| 6-8 месяцев'
+        	WHEN MAX(_recency) between 245 AND 307  THEN '6| 8-10 месяцев'
+        ELSE '7| более 10 месяцев'
             END AS recency_segment,
         SUM(_monetary_value) AS monetary_value, 
             CASE
