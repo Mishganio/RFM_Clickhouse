@@ -32,8 +32,6 @@ clean-targets:         # directories to be removed by `dbt clean`
 # using the `{{ config(...) }}` macro.
 models:
     rfm_clickhouse:
-      # Applies to all files under models/example/
-        #+materialized: table
         staging:
             +materialized: table
         Intermediate:

@@ -13,3 +13,7 @@ models:
           description: ""
           tests:
             - not_null    
+          name: monetary_value
+          description: ""
+          tests:
+            - not_null    

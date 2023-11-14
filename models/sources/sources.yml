@@ -2,14 +2,13 @@ version: 2
 
 sources:
 
-    - name: dbgen
+    - name: CRM
       schema: default
-      tags: ["dbgen"]      
+      tags: ["CRM"]      
       loader: S3
       description: "sales data stored in S3"
 
       tables:
-
         - name: sales
           description: "sales"
           identifier: src_v_sales

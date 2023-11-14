@@ -32,13 +32,13 @@
         	END AS monetary_segment,
         SUM(_frequency) AS frequency,  
             CASE
-			WHEN SUM(_frequency) =1 THEN '1| 1 чек'
-        	WHEN SUM(_frequency) between 2 AND 5    THEN '2| 2-5 чеков'
-        	WHEN SUM(_frequency) between 6 AND 10   THEN '3| 6-10 чеков'
-        	WHEN SUM(_frequency) between 11 AND 30  THEN '4| 11-30 чеков'
-        	WHEN SUM(_frequency) between 31 AND 50  THEN '5| 31-50 чеков'
-        	WHEN SUM(_frequency) between 51 AND 100 THEN '6| 51-100 чеков'
-        ELSE '7| более 100 чеков'
+			WHEN SUM(_frequency) =1 THEN '1| 1 заказ'
+        	WHEN SUM(_frequency) between 2 AND 5    THEN '2| 2-5 заказов'
+        	WHEN SUM(_frequency) between 6 AND 10   THEN '3| 6-10 заказов'
+        	WHEN SUM(_frequency) between 11 AND 30  THEN '4| 11-30 заказов'
+        	WHEN SUM(_frequency) between 31 AND 50  THEN '5| 31-50 закозов'
+        	WHEN SUM(_frequency) between 51 AND 100 THEN '6| 51-100 заказов'
+        ELSE '7| более 100 заказов'
         	END AS frequency_segment,
         SUM(_shops) as shops,
         	  CASE
@@ -70,6 +70,7 @@
         	WHEN SUM(_ali_monetary_value)/if(SUM(_monetary_value)>0,SUM(_monetary_value),1) between 0.75001 AND 0.9    THEN '6| 75-90%'
         ELSE '7| более 90%'
         	END AS ali_percent_segment
-          from int_rfm 
+          from {{ ref('int_rfm') }}
  group by user_id,rdate
+ having SUM(_monetary_value)>0 
     

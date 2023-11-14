@@ -16,4 +16,4 @@ SELECT
         sale_id,
         sale_date,
         review_date
-FROM {{ source('dbgen', 'sales') }}
+FROM {{ source('CRM', 'sales') }}

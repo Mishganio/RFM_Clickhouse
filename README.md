@@ -1,26 +1,26 @@
 ## 1. Configure Developer Environment
     
-       devcontainer build .
-       devcontainer open .
-
-
-1. Populate `.env` file
-
+    devcontainer build .
+    devcontainer open .
     cp .env.template .env
-    
-## 2. Deploy Clickhouse
+
+## 2 Install and configure yc CLI
+
+
+## 2.1 Initialization yc
 
     yc init
 
-1. Set environment variables:
+## 2.2 Set environment variables
 
     export YC_TOKEN=$(yc iam create-token)
     export YC_CLOUD_ID=$(yc config get cloud-id)
     export YC_FOLDER_ID=$(yc config get folder-id)
     export $(xargs <.env)
     
+## 4. Deploy Clickhouse Cluster
 
-1. Deploy using Terraform
+## 4.1 Terraform
 
     cp terraformrc ~/.terraformrc
     
@@ -29,37 +29,33 @@
     terraform fmt
     terraform plan
     terraform apply
-   
+
+## 4.2 Store terraform output values as Environment Variables 
+
     export CLICKHOUSE_HOST=$(terraform output -raw clickhouse_host_fqdn)
     export DBT_HOST=${CLICKHOUSE_HOST}
     export DBT_USER=${CLICKHOUSE_USER}
     export DBT_PASSWORD=${TF_VAR_clickhouse_password}
 
-## 3. Check database connection
+## 5 Deploy DWH
 
-dbt debug
+## 5.1 Check database connection
 
-## 4. Deploy DWH
+    dbt debug
 
-1. Install dbt packages
-
+## 5.2 Install dbt packages
     
     dbt deps
-  
 
-1. Stage data sources with dbt macro
+## 5.3 Stage data sources with dbt macro
 
-    
     dbt run-operation init_s3_sources
     
-
-1. Build staging models:
-
+## 5.4 Build staging models:
    
-    dbt build -s tag:staging
+    dbt build -s stg_sales
 
-
-1. Prepare dynamic RFM table
+## 5.5 Prepare monthly dynamic RFM table 2023
 
     
      dbt build -s int_rfm --vars 'dt: 2023-01-01'
@@ -77,10 +73,6 @@ dbt debug
 
      dbt build -s f_rfm
 
-## 6. Create PR and make CI tests pass
+## 6 Shut down Clickhouse cluster
 
-![Github Actions check passed](./docs/github_checks_passed.png)
-
-## Shut down your cluster
-
-terraform destroy
+    terraform destroy
