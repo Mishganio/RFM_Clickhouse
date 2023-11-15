@@ -14,7 +14,7 @@
         sale_date		DateTime,
         review_date 	DateTime
         )
-        ENGINE = S3(\'https://storage.yandexcloud.net/discount-files2023/v_sales.csv\', \'CustomSeparated\')
+        ENGINE = S3(\'https://storage.yandexcloud.net/rfm-files-2023/v_sales.csv\', \'CustomSeparated\')
         SETTINGS
              format_custom_field_delimiter=\'|\'
             ,format_custom_escaping_rule=\'CSV\'
