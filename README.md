@@ -73,6 +73,13 @@
 
      dbt build -s f_rfm
 
-## 6. Shut down Clickhouse cluster
+## 6. Datalens Dashboard
+
+![page_1](Datalens-1.png)
+![page_2](Datalens-2.png)
+
+
+## 7. Shut down Clickhouse cluster
+
 
     terraform destroy
